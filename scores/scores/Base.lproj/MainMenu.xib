@@ -12,28 +12,23 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="scores" customModuleProvider="target">
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="scores" customModuleProvider="target"/>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="mEQ-Hi-x7F" customClass="ScoresMenuController" customModule="scores" customModuleProvider="target">
             <connections>
-                <outlet property="scoresMenu" destination="83B-5w-V2a" id="dCs-mA-AEc"/>
+                <outlet property="scoresMenu" destination="83B-5w-V2a" id="F9F-th-qjf"/>
             </connections>
         </customObject>
-        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="83B-5w-V2a">
             <items>
-                <menuItem title="NBA" id="gXI-hI-lBx">
+                <menuItem title="Refresh" id="gXI-hI-lBx">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="NBAbutton:" target="Voe-Tx-rLC" id="iXt-Ta-UvM"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="NHL" id="1ss-O9-JgW">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="NHLbutton:" target="Voe-Tx-rLC" id="wMA-Kj-p4G"/>
+                        <action selector="Refresh:" target="mEQ-Hi-x7F" id="MIo-iV-6e4"/>
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-139" y="33"/>
+            <point key="canvasLocation" x="-288" y="27.5"/>
         </menu>
     </objects>
 </document>
