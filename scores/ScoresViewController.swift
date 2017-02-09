@@ -23,8 +23,8 @@ class ScoresMenuController: NSObject {
     let NBAapi = NBA_API()
     
     @IBAction func yesterdayOrToday(_ sender: NSButton) {
+        self.index = 0
         if(!isYesterday){
-            self.index = 0
             let calendar = Calendar.current
             let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())
             var y = yesterday!.description.components(separatedBy: " ")[0]
@@ -37,7 +37,6 @@ class ScoresMenuController: NSObject {
                 self.lengthOfGameList = nba.numberOfGames
             }
         } else {
-            self.index = 0
             yesterdayDate = NBAapi.getTodaysDate()
             NBAapi.getScores(date: yesterdayDate) { nba in
                 self.isYesterday = false
@@ -47,15 +46,17 @@ class ScoresMenuController: NSObject {
             }
         }
     }
+    
     @IBAction func goBack(_ sender: NSButton) {
         if(self.index > 0){
             self.index-=1
             updateScores(index: self.index)
         }
     }
+    
     @IBAction func goForward(_ sender: NSButton) {
         if(self.index < self.lengthOfGameList-1){
-           self.index+=1
+            self.index+=1
             updateScores(index: self.index)
         }
     }
@@ -65,12 +66,13 @@ class ScoresMenuController: NSObject {
         NBAapi.getScores(date: date) { nba in
             if let nbaMenuItem = self.scoresMenu.item(withTitle: "NBAGames") {
 //                lengthOfGameList = nba.numberOfGames
-                for game in nba.games {
-                    print(game)
-                    print("=====")
-                }
-                
-                nbaMenuItem.title = "hi"
+//                for game in nba.games {
+//                    print(game)
+//                    print("=====")
+//                }
+//                
+//                nbaMenuItem.title = "hi"
+                self.updateScores(index: self.index)
             }
         }
     }
