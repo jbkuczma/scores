@@ -10,6 +10,9 @@ import Cocoa
 
 class ScoresMenuController: NSObject {
     @IBOutlet weak var scoresMenu: NSMenu!
+    @IBOutlet weak var gameView: GameView!
+    
+    var gameMenuItem: NSMenuItem!
     
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     let NBAapi = NBA_API()
@@ -18,19 +21,34 @@ class ScoresMenuController: NSObject {
         let date = NBAapi.getTodaysDate()
         NBAapi.getScores(date: date) { nba in
             if let nbaMenuItem = self.scoresMenu.item(withTitle: "NBAGames") {
-//                nbaMenuItem.title = String(describing: type(of:nba.games))
-                var str = ""
-//                for game in nba.games {
-////                    print(game)
-//                    str += String(describing: game)
-//                }
-//                nbaMenuItem.title = str
-                print(nba.games)
+                for game in nba.games {
+                    print(game)
+                    print("=====")
+                }
+                
+                nbaMenuItem.title = "hi"
             }
         }
     }
+    
+    func updateScores() {
+        let date = NBAapi.getTodaysDate()
+        NBAapi.getScores(date: date) { nba in
+//            for game in nba.games {
+//                self.gameView.update(game: game)
+//            }
+            self.gameView.update(game: nba.games[0])
+        }
+//        self.scoresMenu.item(withTitle: "NBAGames")?.title = "hi"
+    }
+    
     override func awakeFromNib() {
         statusItem.title = "scores"
         statusItem.menu = scoresMenu
+        
+        gameMenuItem = scoresMenu.item(withTitle: "NBAGames")
+        gameMenuItem.view = gameView
+        
+        updateScores()
     }
 }

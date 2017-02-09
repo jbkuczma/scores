@@ -87,17 +87,10 @@ class NBA_API {
         var nba = NBA(games: [])
         for game in gameList! {
             let g = game as! NSDictionary
-//            var awayTeamName = game["visitor"]["abbreviation"]
-//            var awayTeamScore = game["visitor"]["score"]
-//            var homeTeamName = game["home"]["abbreviation"]
-//            var homeTeamScore = game["home"]["score"]
-//            var quarter = game["period_time"]["period_status"]
-//            var time = game["period_time"]["game_clock"]
-//            var game = Game()
 //            nba.games.append(game)
-            var home = g["home"] as! NSDictionary
-            var away = g["visitor"] as! NSDictionary
-            var gameStatus = g["period_time"] as! NSDictionary
+            let home = g["home"] as! NSDictionary
+            let away = g["visitor"] as! NSDictionary
+            let gameStatus = g["period_time"] as! NSDictionary
             
             let awayTeamName = away["abbreviation"]! as! String
             let awayTeamScore = away["score"]! as! String

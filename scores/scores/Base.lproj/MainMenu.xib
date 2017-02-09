@@ -26,12 +26,14 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="mEQ-Hi-x7F" customClass="ScoresMenuController" customModule="scores" customModuleProvider="target">
             <connections>
+                <outlet property="gameView" destination="ctA-qj-Psm" id="Gnc-hs-Ma4"/>
                 <outlet property="scoresMenu" destination="83B-5w-V2a" id="F9F-th-qjf"/>
             </connections>
         </customObject>
         <menu id="83B-5w-V2a">
             <items>
                 <menuItem title="Refresh" id="gXI-hI-lBx">
+                    <attributedString key="attributedTitle"/>
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="Refresh:" target="mEQ-Hi-x7F" id="MIo-iV-6e4"/>
@@ -49,36 +51,27 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKo-CQ-eNQ">
-                    <rect key="frame" x="18" y="20" width="75" height="17"/>
+                    <rect key="frame" x="18" y="20" width="92" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Away Score" id="UXr-6f-vFW">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Away Score" id="UXr-6f-vFW">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NeS-c2-Jae">
-                    <rect key="frame" x="170" y="42" width="51" height="17"/>
+                    <rect key="frame" x="154" y="50" width="83" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Quarter" id="Dlo-F0-Izq">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21H-PV-uxv">
-                    <rect key="frame" x="178" y="20" width="34" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Time" id="8rC-Ln-4wd">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Quarter" id="Dlo-F0-Izq">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slA-Jx-v0g">
-                    <rect key="frame" x="18" y="50" width="72" height="17"/>
+                    <rect key="frame" x="18" y="50" width="77" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Away Team" id="Xeh-rO-bCm">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Away Team" id="Xeh-rO-bCm">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -87,16 +80,25 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GKb-RN-7Jb">
                     <rect key="frame" x="295" y="50" width="77" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Home Team" id="0Mg-Xq-RA5">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Home Team" id="0Mg-Xq-RA5">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OjP-pD-ONu">
-                    <rect key="frame" x="293" y="20" width="79" height="17"/>
+                    <rect key="frame" x="278" y="20" width="94" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Home Score" id="ljT-eK-Agk">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Home Score" id="ljT-eK-Agk">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21H-PV-uxv">
+                    <rect key="frame" x="166" y="20" width="59" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Time" id="8rC-Ln-4wd">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -104,12 +106,12 @@
                 </textField>
             </subviews>
             <connections>
-                <outlet property="awayTeamName" destination="slA-Jx-v0g" id="QZh-E6-nZ0"/>
-                <outlet property="awayTeamScore" destination="yKo-CQ-eNQ" id="oUw-i1-otn"/>
-                <outlet property="homeTeamName" destination="GKb-RN-7Jb" id="a8R-HX-3ah"/>
-                <outlet property="homeTeamScore" destination="OjP-pD-ONu" id="7AH-QL-fPr"/>
-                <outlet property="quarter" destination="NeS-c2-Jae" id="YIW-vH-d5T"/>
-                <outlet property="time" destination="21H-PV-uxv" id="LGp-gn-wVR"/>
+                <outlet property="awayTeamName" destination="slA-Jx-v0g" id="hjX-j3-N3S"/>
+                <outlet property="awayTeamScore" destination="yKo-CQ-eNQ" id="f8m-AU-GtD"/>
+                <outlet property="homeTeamName" destination="GKb-RN-7Jb" id="wpP-CV-4f8"/>
+                <outlet property="homeTeamScore" destination="OjP-pD-ONu" id="fcG-2r-LHP"/>
+                <outlet property="quarter" destination="NeS-c2-Jae" id="lcU-XF-Est"/>
+                <outlet property="time" destination="21H-PV-uxv" id="Om5-iq-UXh"/>
             </connections>
             <point key="canvasLocation" x="-305" y="89.5"/>
         </customView>

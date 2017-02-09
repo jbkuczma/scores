@@ -10,7 +10,6 @@ import Cocoa
 
 class GameView: NSView {
     
-    
     @IBOutlet weak var awayTeamName: NSTextField!
     @IBOutlet weak var awayTeamScore: NSTextField!
     @IBOutlet weak var homeTeamName: NSTextField!
@@ -18,16 +17,16 @@ class GameView: NSView {
     @IBOutlet weak var quarter: NSTextField!
     @IBOutlet weak var time: NSTextField!
     
-    func update(game: [String: Any]) {
+    func update(game: Game) {
         // do UI updates on the main thread
-//        DispatchQueue.main.async() {
-//            self.awayTeamName.stringValue = game["visitor"]["abbreviation"]
-//            self.awayTeamScore.stringValue = game["visitor"]["score"]
-//            self.homeTeamName.stringValue = game["home"]["abbreviation"]
-//            self.homeTeamScore.stringValue = game["home"]["score"]
-//            self.quarter.stringValue = game["period_time"]["period_status"]
-//            self.time.stringValue = game["period_time"]["game_clock"]
-//        }
+        DispatchQueue.main.async() {
+            self.awayTeamName.stringValue = game.awayTeamName
+            self.awayTeamScore.stringValue = game.awayTeamScore
+            self.homeTeamName.stringValue = game.homeTeamName
+            self.homeTeamScore.stringValue = game.homeTeamScore
+            self.quarter.stringValue = game.quarter
+            self.time.stringValue = game.time
+        }
     }
     
 }
