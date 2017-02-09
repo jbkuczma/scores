@@ -23,9 +23,6 @@ struct Game {
 }
 
 class NBA_API {
-//    let baseURL = String(format: "http://data.nba.com/data/5s/json/cms/noseason/scoreboard/%@/games.json", "2017")
-    
-//    let baseURL = "http://data.nba.com/data/5s/json/cms/noseason/scoreboard/{DATE}/games.json"
     
     let baseURL = "http://data.nba.com/data/5s/json/cms/noseason/scoreboard/%@/games.json"
     
@@ -48,18 +45,6 @@ class NBA_API {
                     if let nba = self.parseJSON(data: data! as NSData) {
                         success(nba)
                     }
-//                    print(nba!.games)
-                    
-//                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
-//                    var jsonData = parsedData["sports_content"] as! [String:Any]
-//                    var games = jsonData["games"] as! [String:Any]
-//                    let gameList = games["game"] as? [[String:Any]]
-//                    print(type(of:gameList))
-//                    for game in gameList! {
-//                        print(game)
-//                    }
-//                    nba.games = gameList!
-                    
                 } catch let error as NSError {
                     print(error)
                 }
@@ -88,7 +73,6 @@ class NBA_API {
         var nba = NBA(games: [], numberOfGames: 0)
         for game in gameList! {
             let g = game as! NSDictionary
-//            nba.games.append(game)
             let home = g["home"] as! NSDictionary
             let away = g["visitor"] as! NSDictionary
             let gameStatus = g["period_time"] as! NSDictionary

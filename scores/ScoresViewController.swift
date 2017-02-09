@@ -65,13 +65,6 @@ class ScoresMenuController: NSObject {
         let date = NBAapi.getTodaysDate()
         NBAapi.getScores(date: date) { nba in
             if let nbaMenuItem = self.scoresMenu.item(withTitle: "NBAGames") {
-//                lengthOfGameList = nba.numberOfGames
-//                for game in nba.games {
-//                    print(game)
-//                    print("=====")
-//                }
-//                
-//                nbaMenuItem.title = "hi"
                 self.updateScores(index: self.index)
             }
         }
