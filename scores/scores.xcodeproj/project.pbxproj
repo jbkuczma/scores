@@ -14,6 +14,7 @@
 		1A256B4C1E4BC84900BE9F4F /* scoresUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A256B4B1E4BC84900BE9F4F /* scoresUITests.swift */; };
 		1A256B5C1E4BDBCC00BE9F4F /* ScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A256B5B1E4BDBCC00BE9F4F /* ScoresViewController.swift */; };
 		1A256B5E1E4BDD8800BE9F4F /* NBA_API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A256B5D1E4BDD8800BE9F4F /* NBA_API.swift */; };
+		1A256B601E4CB76D00BE9F4F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A256B5F1E4CB76D00BE9F4F /* GameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		1A256B4D1E4BC84900BE9F4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A256B5B1E4BDBCC00BE9F4F /* ScoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoresViewController.swift; path = ../ScoresViewController.swift; sourceTree = "<group>"; };
 		1A256B5D1E4BDD8800BE9F4F /* NBA_API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBA_API.swift; sourceTree = "<group>"; };
+		1A256B5F1E4CB76D00BE9F4F /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				1A256B301E4BC84900BE9F4F /* AppDelegate.swift */,
 				1A256B321E4BC84900BE9F4F /* Assets.xcassets */,
 				1A256B341E4BC84900BE9F4F /* MainMenu.xib */,
+				1A256B5F1E4CB76D00BE9F4F /* GameView.swift */,
 				1A256B371E4BC84900BE9F4F /* Info.plist */,
 			);
 			path = scores;
@@ -260,6 +263,7 @@
 			files = (
 				1A256B311E4BC84900BE9F4F /* AppDelegate.swift in Sources */,
 				1A256B5C1E4BDBCC00BE9F4F /* ScoresViewController.swift in Sources */,
+				1A256B601E4CB76D00BE9F4F /* GameView.swift in Sources */,
 				1A256B5E1E4BDD8800BE9F4F /* NBA_API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

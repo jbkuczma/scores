@@ -9,7 +9,16 @@
 import Foundation
 
 struct NBA {
-    var games: Array<Any>
+    var games: [Game]
+}
+
+struct Game {
+    var homeTeamName: String
+    var homeTeamScore: String
+    var awayTeamName: String
+    var awayTeamScore: String
+    var quarter: String
+    var time: String
 }
 
 class NBA_API {
@@ -35,9 +44,10 @@ class NBA_API {
                 print(error)
             } else {
                 do {
-                    let nba = self.parseJSON(data: data! as NSData)
+                    if let nba = self.parseJSON(data: data! as NSData) {
+                        success(nba)
+                    }
 //                    print(nba!.games)
-                    success(nba!)
                     
 //                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
 //                    var jsonData = parsedData["sports_content"] as! [String:Any]
@@ -76,7 +86,36 @@ class NBA_API {
         
         var nba = NBA(games: [])
         for game in gameList! {
-            nba.games.append(game)
+            let g = game as! NSDictionary
+//            var awayTeamName = game["visitor"]["abbreviation"]
+//            var awayTeamScore = game["visitor"]["score"]
+//            var homeTeamName = game["home"]["abbreviation"]
+//            var homeTeamScore = game["home"]["score"]
+//            var quarter = game["period_time"]["period_status"]
+//            var time = game["period_time"]["game_clock"]
+//            var game = Game()
+//            nba.games.append(game)
+            var home = g["home"] as! NSDictionary
+            var away = g["visitor"] as! NSDictionary
+            var gameStatus = g["period_time"] as! NSDictionary
+            
+            let awayTeamName = away["abbreviation"]! as! String
+            let awayTeamScore = away["score"]! as! String
+            let homeTeamName = home["abbreviation"]! as! String
+            let homeTeamScore = home["score"]! as! String
+            let quarter = gameStatus["period_status"]! as! String
+            let time = gameStatus["game_clock"]! as! String
+            
+            let gameInfo = Game(
+                homeTeamName: homeTeamName,
+                homeTeamScore: homeTeamScore,
+                awayTeamName: awayTeamName,
+                awayTeamScore: awayTeamScore,
+                quarter: quarter,
+                time: time
+            )
+            
+            nba.games.append(gameInfo)
         }
         
         return nba
