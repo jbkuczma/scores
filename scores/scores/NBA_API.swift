@@ -27,22 +27,27 @@ class NBA_API {
         return result
     }
     
-    func getScores(date: String) {
+    func getScores(date: String, success: @escaping (NBA) -> Void) {
         let url = URL(string: String(format: baseURL, date))
+        var nba = NBA(games: [])
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
                 print(error)
             } else {
                 do {
+                    let nba = self.parseJSON(data: data! as NSData)
+//                    print(nba!.games)
+                    success(nba!)
                     
-                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
-                    var jsonData = parsedData["sports_content"] as! [String:Any]
-                    var games = jsonData["games"] as! [String:Any]
-                    let gameList = games["game"] as? [[String:Any]]
-                    print(type(of:gameList))
-                    for game in gameList! {
-                        print(game)
-                    }
+//                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
+//                    var jsonData = parsedData["sports_content"] as! [String:Any]
+//                    var games = jsonData["games"] as! [String:Any]
+//                    let gameList = games["game"] as? [[String:Any]]
+//                    print(type(of:gameList))
+//                    for game in gameList! {
+//                        print(game)
+//                    }
+//                    nba.games = gameList!
                     
                 } catch let error as NSError {
                     print(error)
@@ -50,25 +55,32 @@ class NBA_API {
             }
             
             }.resume()
+        
+        
     }
     
-//    func parseJSONData(data: NSData) -> NBA? {
-//        typealias JSONDict = [String:AnyObject]
-//        let json : JSONDict
-//        
-//        do {
-//            json = try JSONSerialization.jsonObject(with: data as Data, options: []) as! JSONDict
-//        } catch {
-//            print("JSON parsing failed: \(error)")
-//            return nil
-//        }
-//        
-////        var mainDict = json["sports_content"]?["games"]?["game"]
-////        
-////        let nba = NBA(
-////            games: mainDict as Array<Any>!
-////        )
-////        
-////        return nba
-//    }
+    func parseJSON(data: NSData) -> NBA? {
+        typealias JSONDict = [String:AnyObject]
+        let json : JSONDict
+        
+        do {
+            json = try JSONSerialization.jsonObject(with: data as Data, options: []) as! JSONDict
+        } catch {
+            NSLog("JSON parsing failed: \(error)")
+            return nil
+        }
+        
+        var jsonData = json["sports_content"] as! [String:Any]
+        var games = jsonData["games"] as! [String:Any]
+        let gameList = games["game"] as? [[String:Any]]
+        
+        
+        let nba = NBA(
+            games: gameList!
+        )
+        
+        return nba
+    }
+
+    
 }

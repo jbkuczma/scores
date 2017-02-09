@@ -16,7 +16,17 @@ class ScoresMenuController: NSObject {
     
     @IBAction func Refresh(_ sender: NSMenuItem) {
         let date = NBAapi.getTodaysDate()
-       NBAapi.getScores(date: date)
+        NBAapi.getScores(date: date) { nba in
+            if let nbaMenuItem = self.scoresMenu.item(withTitle: "NBAGames") {
+//                nbaMenuItem.title = String(describing: type(of:nba.games))
+                var str = ""
+                for game in nba.games {
+//                    print(game)
+                    str += String(describing: game)
+                }
+                nbaMenuItem.title = str
+            }
+        }
     }
     override func awakeFromNib() {
         statusItem.title = "scores"
