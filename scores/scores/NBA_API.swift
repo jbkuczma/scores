@@ -74,10 +74,10 @@ class NBA_API {
         var games = jsonData["games"] as! [String:Any]
         let gameList = games["game"] as? [[String:Any]]
         
-        
-        let nba = NBA(
-            games: gameList!
-        )
+        var nba = NBA(games: [])
+        for game in gameList! {
+            nba.games.append(game)
+        }
         
         return nba
     }

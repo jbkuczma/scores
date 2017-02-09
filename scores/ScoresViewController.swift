@@ -20,11 +20,12 @@ class ScoresMenuController: NSObject {
             if let nbaMenuItem = self.scoresMenu.item(withTitle: "NBAGames") {
 //                nbaMenuItem.title = String(describing: type(of:nba.games))
                 var str = ""
-                for game in nba.games {
-//                    print(game)
-                    str += String(describing: game)
-                }
-                nbaMenuItem.title = str
+//                for game in nba.games {
+////                    print(game)
+//                    str += String(describing: game)
+//                }
+//                nbaMenuItem.title = str
+                print(nba.games)
             }
         }
     }
