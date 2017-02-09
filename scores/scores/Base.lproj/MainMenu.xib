@@ -27,6 +27,10 @@
                         <action selector="Refresh:" target="mEQ-Hi-x7F" id="MIo-iV-6e4"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="OYA-hE-Kw6"/>
+                <menuItem title="NBAGames" id="BT8-Jg-xKb">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
             </items>
             <point key="canvasLocation" x="-288" y="27.5"/>
         </menu>
