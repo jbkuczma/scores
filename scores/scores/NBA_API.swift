@@ -10,6 +10,7 @@ import Foundation
 
 struct NBA {
     var games: [Game]
+    var numberOfGames: Int
 }
 
 struct Game {
@@ -38,7 +39,7 @@ class NBA_API {
     
     func getScores(date: String, success: @escaping (NBA) -> Void) {
         let url = URL(string: String(format: baseURL, date))
-        var nba = NBA(games: [])
+        var nba = NBA(games: [], numberOfGames: 0)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
                 print(error)
@@ -84,7 +85,7 @@ class NBA_API {
         var games = jsonData["games"] as! [String:Any]
         let gameList = games["game"] as? [[String:Any]]
         
-        var nba = NBA(games: [])
+        var nba = NBA(games: [], numberOfGames: 0)
         for game in gameList! {
             let g = game as! NSDictionary
 //            nba.games.append(game)
@@ -109,7 +110,10 @@ class NBA_API {
             )
             
             nba.games.append(gameInfo)
+            nba.numberOfGames+=1
         }
+        
+        
         
         return nba
     }

@@ -47,11 +47,11 @@
             <point key="canvasLocation" x="-305" y="-71"/>
         </menu>
         <customView id="ctA-qj-Psm" customClass="GameView" customModule="scores" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="79"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKo-CQ-eNQ">
-                    <rect key="frame" x="18" y="20" width="92" height="17"/>
+                    <rect key="frame" x="18" y="36" width="92" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Away Score" id="UXr-6f-vFW">
                         <font key="font" metaFont="system"/>
@@ -60,7 +60,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NeS-c2-Jae">
-                    <rect key="frame" x="154" y="50" width="83" height="17"/>
+                    <rect key="frame" x="154" y="66" width="83" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Quarter" id="Dlo-F0-Izq">
                         <font key="font" metaFont="system"/>
@@ -69,7 +69,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slA-Jx-v0g">
-                    <rect key="frame" x="18" y="50" width="77" height="17"/>
+                    <rect key="frame" x="18" y="66" width="77" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Away Team" id="Xeh-rO-bCm">
                         <font key="font" metaFont="system"/>
@@ -78,7 +78,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GKb-RN-7Jb">
-                    <rect key="frame" x="295" y="50" width="77" height="17"/>
+                    <rect key="frame" x="295" y="66" width="77" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Home Team" id="0Mg-Xq-RA5">
                         <font key="font" metaFont="system"/>
@@ -87,7 +87,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OjP-pD-ONu">
-                    <rect key="frame" x="278" y="20" width="94" height="17"/>
+                    <rect key="frame" x="278" y="36" width="94" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Home Score" id="ljT-eK-Agk">
                         <font key="font" metaFont="system"/>
@@ -96,7 +96,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21H-PV-uxv">
-                    <rect key="frame" x="166" y="20" width="59" height="17"/>
+                    <rect key="frame" x="166" y="36" width="59" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Time" id="8rC-Ln-4wd">
                         <font key="font" metaFont="system"/>
@@ -104,6 +104,28 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SpD-5D-x2g">
+                    <rect key="frame" x="156" y="4" width="23" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundTextured" title="&lt;" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="exs-To-rZd">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="goBack:" target="mEQ-Hi-x7F" id="t2N-6y-6dk"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ytx-eq-QgL">
+                    <rect key="frame" x="212" y="4" width="23" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundTextured" title="&gt;" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FYK-sl-kou">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="goForward:" target="mEQ-Hi-x7F" id="CAw-5M-kB7"/>
+                    </connections>
+                </button>
             </subviews>
             <connections>
                 <outlet property="awayTeamName" destination="slA-Jx-v0g" id="hjX-j3-N3S"/>
@@ -113,7 +135,7 @@
                 <outlet property="quarter" destination="NeS-c2-Jae" id="lcU-XF-Est"/>
                 <outlet property="time" destination="21H-PV-uxv" id="Om5-iq-UXh"/>
             </connections>
-            <point key="canvasLocation" x="-305" y="89.5"/>
+            <point key="canvasLocation" x="-305" y="97.5"/>
         </customView>
     </objects>
 </document>
