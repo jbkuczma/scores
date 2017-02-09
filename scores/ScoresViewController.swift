@@ -11,14 +11,42 @@ import Cocoa
 class ScoresMenuController: NSObject {
     @IBOutlet weak var scoresMenu: NSMenu!
     @IBOutlet weak var gameView: GameView!
+    @IBOutlet weak var yesterdayOrTodayButton: NSButton!
     
     var gameMenuItem: NSMenuItem!
     var index = 0
     var lengthOfGameList = 0
+    var isYesterday = false
+    var yesterdayDate = ""
     
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     let NBAapi = NBA_API()
     
+    @IBAction func yesterdayOrToday(_ sender: NSButton) {
+        if(!isYesterday){
+            self.index = 0
+            let calendar = Calendar.current
+            let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())
+            var y = yesterday!.description.components(separatedBy: " ")[0]
+            y = y.replacingOccurrences(of: "-", with: "")
+            yesterdayDate = y
+            NBAapi.getScores(date: y) { nba in
+                self.isYesterday = true
+                self.yesterdayOrTodayButton.title = "Today"
+                self.gameView.update(game: nba.games[self.index])
+                self.lengthOfGameList = nba.numberOfGames
+            }
+        } else {
+            self.index = 0
+            yesterdayDate = NBAapi.getTodaysDate()
+            NBAapi.getScores(date: yesterdayDate) { nba in
+                self.isYesterday = false
+                self.yesterdayOrTodayButton.title = "Yesterday"
+                self.gameView.update(game: nba.games[self.index])
+                self.lengthOfGameList = nba.numberOfGames
+            }
+        }
+    }
     @IBAction func goBack(_ sender: NSButton) {
         if(self.index > 0){
             self.index-=1
@@ -31,6 +59,7 @@ class ScoresMenuController: NSObject {
             updateScores(index: self.index)
         }
     }
+    
     @IBAction func Refresh(_ sender: NSMenuItem) {
         let date = NBAapi.getTodaysDate()
         NBAapi.getScores(date: date) { nba in
@@ -47,11 +76,8 @@ class ScoresMenuController: NSObject {
     }
     
     func updateScores(index: Int) {
-        let date = NBAapi.getTodaysDate()
+        let date = isYesterday ? yesterdayDate : NBAapi.getTodaysDate()
         NBAapi.getScores(date: date) { nba in
-//            for game in nba.games {
-//                self.gameView.update(game: game)
-//            }
             self.gameView.update(game: nba.games[index])
             self.lengthOfGameList = nba.numberOfGames
         }

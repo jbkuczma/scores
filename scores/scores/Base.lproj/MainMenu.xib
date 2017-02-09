@@ -28,6 +28,7 @@
             <connections>
                 <outlet property="gameView" destination="ctA-qj-Psm" id="Gnc-hs-Ma4"/>
                 <outlet property="scoresMenu" destination="83B-5w-V2a" id="F9F-th-qjf"/>
+                <outlet property="yesterdayOrTodayButton" destination="LpI-Dl-h0U" id="9ME-nT-wgS"/>
             </connections>
         </customObject>
         <menu id="83B-5w-V2a">
@@ -104,19 +105,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SpD-5D-x2g">
-                    <rect key="frame" x="156" y="4" width="23" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundTextured" title="&lt;" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="exs-To-rZd">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="goBack:" target="mEQ-Hi-x7F" id="t2N-6y-6dk"/>
-                    </connections>
-                </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ytx-eq-QgL">
-                    <rect key="frame" x="212" y="4" width="23" height="25"/>
+                    <rect key="frame" x="243" y="4" width="23" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundTextured" title="&gt;" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FYK-sl-kou">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -124,6 +114,28 @@
                     </buttonCell>
                     <connections>
                         <action selector="goForward:" target="mEQ-Hi-x7F" id="CAw-5M-kB7"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LpI-Dl-h0U">
+                    <rect key="frame" x="156" y="4" width="79" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundTextured" title="Yesterday" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UB5-35-XSm">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="yesterdayOrToday:" target="mEQ-Hi-x7F" id="Ec1-qr-TPQ"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SpD-5D-x2g">
+                    <rect key="frame" x="125" y="4" width="23" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundTextured" title="&lt;" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="exs-To-rZd">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="goBack:" target="mEQ-Hi-x7F" id="t2N-6y-6dk"/>
                     </connections>
                 </button>
             </subviews>
