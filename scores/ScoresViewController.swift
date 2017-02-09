@@ -86,11 +86,15 @@ class ScoresMenuController: NSObject {
     }
     
     override func awakeFromNib() {
-        statusItem.title = "scores"
+//        statusItem.title = "scores"
         statusItem.menu = scoresMenu
         
         gameMenuItem = scoresMenu.item(withTitle: "NBAGames")
         gameMenuItem.view = gameView
+        
+        let icon = NSImage(named: "statusIcon")
+        icon?.isTemplate = true // best for dark mode
+        statusItem.image = icon
         
         updateScores(index: index)
     }
