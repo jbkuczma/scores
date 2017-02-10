@@ -44,8 +44,12 @@
                 <menuItem title="NBAGames" id="BT8-Jg-xKb">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="GUw-eZ-ZVh"/>
+                <menuItem title="NHLGames" id="lUN-v4-O57">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
             </items>
-            <point key="canvasLocation" x="-305" y="-71"/>
+            <point key="canvasLocation" x="-305" y="-61.5"/>
         </menu>
         <customView id="ctA-qj-Psm" customClass="GameView" customModule="scores" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="390" height="95"/>
