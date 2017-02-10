@@ -26,7 +26,15 @@ class ScoresMenuController: NSObject {
         self.index = 0
         if(!isYesterday){
             let calendar = Calendar.current
-            let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())
+
+            // gets current date time and converts via calendar to a valid date
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let dateString = formatter.string(from: date)
+            let newDate = formatter.date(from: dateString)
+            
+            let yesterday = calendar.date(byAdding: .day, value: -1, to: newDate!)
             var y = yesterday!.description.components(separatedBy: " ")[0]
             y = y.replacingOccurrences(of: "-", with: "")
             yesterdayDate = y
