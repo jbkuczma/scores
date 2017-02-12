@@ -45,21 +45,31 @@ class ScoresMenuController: NSObject {
             
             let yesterday = calendar.date(byAdding: .day, value: -1, to: newDate!)
             var y = yesterday!.description.components(separatedBy: " ")[0]
+            yesterdayNHLDate = y
             y = y.replacingOccurrences(of: "-", with: "")
             yesterdayNBADate = y
-            NBAapi.getScores(date: y) { nba in
+            NBAapi.getScores(date: yesterdayNBADate) { nba in
                 self.isYesterday = true
                 self.yesterdayOrTodayButton.title = "Today"
                 self.nbaGameView.update(game: nba.games[self.nbaIndex])
                 self.lengthOfNBAGameList = nba.numberOfGames
             }
+            NHLapi.getScores(date: yesterdayNHLDate) { nhl in
+                self.nhlGameView.update(game: nhl.games[self.nhlIndex])
+                self.lengthOfNHLGameList = nhl.numberOfGames
+            }
         } else {
             yesterdayNBADate = NBAapi.getTodaysDate()
+            yesterdayNHLDate = NHLapi.getTodaysDate()
             NBAapi.getScores(date: yesterdayNBADate) { nba in
                 self.isYesterday = false
                 self.yesterdayOrTodayButton.title = "Yesterday"
                 self.nbaGameView.update(game: nba.games[self.nbaIndex])
                 self.lengthOfNBAGameList = nba.numberOfGames
+            }
+            NHLapi.getScores(date: yesterdayNHLDate) { nhl in
+                self.nhlGameView.update(game: nhl.games[self.nhlIndex])
+                self.lengthOfNHLGameList = nhl.numberOfGames
             }
         }
     }

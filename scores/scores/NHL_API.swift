@@ -73,18 +73,19 @@ class NHL_API {
         
        
         var nhl = NHL(games: [], numberOfGames: 0)
+       
         for game in data {
             let awayTeamName = game["atcommon"]! as! String
-            let awayTeamScore = game["ats"]! as! String
+            let awayTeamScore = game["ats"]!
             let homeTeamName = game["htcommon"]! as! String
-            let homeTeamScore = game["hts"]! as! String
+            let homeTeamScore = game["hts"]! 
             let quarter = game["bsc"]! as! String
             let time = game["bs"]! as! String
             let gameInfo = Game(
                 homeTeamName: homeTeamName,
-                homeTeamScore: homeTeamScore,
+                homeTeamScore: String(describing: homeTeamScore),
                 awayTeamName: awayTeamName,
-                awayTeamScore: awayTeamScore,
+                awayTeamScore: String(describing: awayTeamScore),
                 quarter: quarter,
                 time: time
             )
