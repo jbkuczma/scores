@@ -12,13 +12,17 @@ class ScoresMenuController: NSObject {
     @IBOutlet weak var scoresMenu: NSMenu!
     @IBOutlet weak var nbaGameView: GameView!
     @IBOutlet weak var nhlGameView: GameView!
+    @IBOutlet weak var controlView: NSView!
+    
     
     @IBOutlet weak var yesterdayOrTodayButton: NSButton!
     
     var nbaGameMenuItem: NSMenuItem!
     var nhlGameMenuItem: NSMenuItem!
-    var index = 0
-    var lengthOfGameList = 0
+    var nbaIndex = 0
+    var nhlIndex = 0
+    var lengthOfNBAGameList = 0
+    var lengthOfNHLGameList = 0
     var isYesterday = false
     var yesterdayNBADate = ""
     var yesterdayNHLDate = ""
@@ -28,7 +32,7 @@ class ScoresMenuController: NSObject {
     let NHLapi = NHL_API()
     
     @IBAction func yesterdayOrToday(_ sender: NSButton) {
-        self.index = 0
+        self.nbaIndex = 0
         if(!isYesterday){
             let calendar = Calendar.current
 
@@ -46,31 +50,39 @@ class ScoresMenuController: NSObject {
             NBAapi.getScores(date: y) { nba in
                 self.isYesterday = true
                 self.yesterdayOrTodayButton.title = "Today"
-                self.nbaGameView.update(game: nba.games[self.index])
-                self.lengthOfGameList = nba.numberOfGames
+                self.nbaGameView.update(game: nba.games[self.nbaIndex])
+                self.lengthOfNBAGameList = nba.numberOfGames
             }
         } else {
             yesterdayNBADate = NBAapi.getTodaysDate()
             NBAapi.getScores(date: yesterdayNBADate) { nba in
                 self.isYesterday = false
                 self.yesterdayOrTodayButton.title = "Yesterday"
-                self.nbaGameView.update(game: nba.games[self.index])
-                self.lengthOfGameList = nba.numberOfGames
+                self.nbaGameView.update(game: nba.games[self.nbaIndex])
+                self.lengthOfNBAGameList = nba.numberOfGames
             }
         }
     }
     
     @IBAction func goBack(_ sender: NSButton) {
-        if(self.index > 0){
-            self.index-=1
-            updateScores(index: self.index)
+        if(self.nbaIndex > 0){
+            self.nbaIndex-=1
+            updateNBAScores(index: self.nbaIndex)
+        }
+        if(self.nhlIndex > 0){
+            self.nhlIndex-=1
+            updateNHLScores(index: self.nhlIndex)
         }
     }
     
     @IBAction func goForward(_ sender: NSButton) {
-        if(self.index < self.lengthOfGameList-1){
-            self.index+=1
-            updateScores(index: self.index)
+        if(self.nbaIndex < self.lengthOfNBAGameList-1){
+            self.nbaIndex+=1
+            updateNBAScores(index: self.nbaIndex)
+        }
+        if(self.nhlIndex < self.lengthOfNHLGameList-1){
+            self.nhlIndex+=1
+            updateNHLScores(index: self.nhlIndex)
         }
     }
     
@@ -79,28 +91,30 @@ class ScoresMenuController: NSObject {
         let nhlDate = NHLapi.getTodaysDate()
         NBAapi.getScores(date: nbaDate) { nba in
             if let nbaMenuItem = self.scoresMenu.item(withTitle: "NBAGames") {
-                self.updateScores(index: self.index)
+                self.updateNBAScores(index: self.nbaIndex)
             }
         }
         NHLapi.getScores(date: nhlDate) { nhl in
             if let nhlMenuItem = self.scoresMenu.item(withTitle: "NHLGames") {
-                self.updateScores(index: self.index)
+                self.updateNHLScores(index: self.nhlIndex)
             }
-//            print(nhl)
         }
         
     }
     
-    func updateScores(index: Int) {
+    func updateNBAScores(index: Int) {
         let nbaDate = isYesterday ? yesterdayNBADate : NBAapi.getTodaysDate()
-        let nhlDate = isYesterday ? yesterdayNHLDate : NHLapi.getTodaysDate()
         NBAapi.getScores(date: nbaDate) { nba in
             self.nbaGameView.update(game: nba.games[index])
-            self.lengthOfGameList = nba.numberOfGames
+            self.lengthOfNBAGameList = nba.numberOfGames
         }
+    }
+    
+    func updateNHLScores(index: Int) {
+        let nhlDate = isYesterday ? yesterdayNHLDate : NHLapi.getTodaysDate()
         NHLapi.getScores(date: nhlDate) { nhl in
             self.nhlGameView.update(game: nhl.games[index])
-            self.lengthOfGameList = nhl.numberOfGames
+            self.lengthOfNHLGameList = nhl.numberOfGames
         }
     }
     
@@ -114,10 +128,13 @@ class ScoresMenuController: NSObject {
         nhlGameMenuItem = scoresMenu.item(withTitle: "NHLGames")
         nhlGameMenuItem.view = nhlGameView
         
+        scoresMenu.item(withTitle: "Control")?.view = controlView
+        
         let icon = NSImage(named: "statusIcon")
         icon?.isTemplate = true // best for dark mode
         statusItem.image = icon
         
-        updateScores(index: index)
+        updateNBAScores(index: nbaIndex)
+        updateNHLScores(index: nhlIndex)
     }
 }

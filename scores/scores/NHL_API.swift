@@ -44,16 +44,7 @@ class NHL_API {
                     
                     let jsonData = self.convertToDictionary(text: newData)! as! [String: Any]
                     let games = jsonData["games"] as? [[String:Any]]
-                    
-                    
-
-                    for game in games! {
-                        print(game)
-                        print("===")
-                    }
-                    
-                    
-                    
+ 
                     if let nhl = self.parseData(data: games!) {
                         success(nhl)
                     }

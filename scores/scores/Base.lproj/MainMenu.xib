@@ -26,10 +26,12 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="mEQ-Hi-x7F" customClass="ScoresMenuController" customModule="scores" customModuleProvider="target">
             <connections>
+                <outlet property="controlView" destination="iwy-2T-4R6" id="jPV-HB-6Yk"/>
                 <outlet property="gameView" destination="ctA-qj-Psm" id="Gnc-hs-Ma4"/>
                 <outlet property="nbaGameView" destination="ctA-qj-Psm" id="990-9C-y5U"/>
                 <outlet property="nhlGameView" destination="6LI-vD-DGu" id="M4y-j4-XpD"/>
                 <outlet property="scoresMenu" destination="83B-5w-V2a" id="F9F-th-qjf"/>
+                <outlet property="yesterdayOrTodayButton" destination="7CA-dj-CJV" id="Ejo-QX-ckS"/>
             </connections>
         </customObject>
         <menu id="83B-5w-V2a">
@@ -49,8 +51,12 @@
                 <menuItem title="NHLGames" id="lUN-v4-O57">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="tjg-Pw-rYx"/>
+                <menuItem title="Control" id="Ac0-OA-u7D">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
             </items>
-            <point key="canvasLocation" x="-305" y="-61.5"/>
+            <point key="canvasLocation" x="-305" y="-105"/>
         </menu>
         <customView id="ctA-qj-Psm" customClass="GameView" customModule="scores" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="390" height="95"/>
@@ -179,39 +185,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OCg-9l-aK6">
-                    <rect key="frame" x="243" y="4" width="23" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundTextured" title="&gt;" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i7b-KY-2ID">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="goForward:" target="mEQ-Hi-x7F" id="vND-QO-81Q"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7CA-dj-CJV">
-                    <rect key="frame" x="156" y="4" width="79" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundTextured" title="Yesterday" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNy-JE-yWw">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="yesterdayOrToday:" target="mEQ-Hi-x7F" id="VoX-oP-QiM"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RMW-ao-tD6">
-                    <rect key="frame" x="125" y="4" width="23" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundTextured" title="&lt;" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7yt-pR-2l9">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="goBack:" target="mEQ-Hi-x7F" id="rND-wh-RbE"/>
-                    </connections>
-                </button>
             </subviews>
             <connections>
                 <outlet property="awayTeamName" destination="JV4-w1-fwP" id="9pe-1O-TSj"/>
@@ -222,6 +195,46 @@
                 <outlet property="time" destination="EKT-Bv-4EF" id="cIU-TN-YxL"/>
             </connections>
             <point key="canvasLocation" x="-305" y="254"/>
+        </customView>
+        <customView id="iwy-2T-4R6" customClass="Control">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="47"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OCg-9l-aK6">
+                    <rect key="frame" x="243" y="10" width="23" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundTextured" title="&gt;" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i7b-KY-2ID">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="goForward:" target="mEQ-Hi-x7F" id="vND-QO-81Q"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7CA-dj-CJV">
+                    <rect key="frame" x="156" y="10" width="79" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundTextured" title="Yesterday" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNy-JE-yWw">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="yesterdayOrToday:" target="mEQ-Hi-x7F" id="qVT-IE-4Sz"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RMW-ao-tD6">
+                    <rect key="frame" x="125" y="10" width="23" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundTextured" title="&lt;" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7yt-pR-2l9">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="goBack:" target="mEQ-Hi-x7F" id="rND-wh-RbE"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="-305" y="395"/>
         </customView>
     </objects>
 </document>
