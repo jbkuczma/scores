@@ -11,13 +11,17 @@ import Cocoa
 class ScoresMenuController: NSObject {
     @IBOutlet weak var scoresMenu: NSMenu!
     @IBOutlet weak var nbaGameView: GameView!
+    @IBOutlet weak var nhlGameView: GameView!
+    
     @IBOutlet weak var yesterdayOrTodayButton: NSButton!
     
-    var gameMenuItem: NSMenuItem!
+    var nbaGameMenuItem: NSMenuItem!
+    var nhlGameMenuItem: NSMenuItem!
     var index = 0
     var lengthOfGameList = 0
     var isYesterday = false
     var yesterdayNBADate = ""
+    var yesterdayNHLDate = ""
     
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     let NBAapi = NBA_API()
@@ -79,19 +83,24 @@ class ScoresMenuController: NSObject {
             }
         }
         NHLapi.getScores(date: nhlDate) { nhl in
-//            if let nhlMenuItem = self.scoresMenu.item(withTitle: "NHLGames") {
-//                self.updateScores(index: self.index)
-//            }
-            print(nhl)
+            if let nhlMenuItem = self.scoresMenu.item(withTitle: "NHLGames") {
+                self.updateScores(index: self.index)
+            }
+//            print(nhl)
         }
         
     }
     
     func updateScores(index: Int) {
         let nbaDate = isYesterday ? yesterdayNBADate : NBAapi.getTodaysDate()
+        let nhlDate = isYesterday ? yesterdayNHLDate : NHLapi.getTodaysDate()
         NBAapi.getScores(date: nbaDate) { nba in
             self.nbaGameView.update(game: nba.games[index])
             self.lengthOfGameList = nba.numberOfGames
+        }
+        NHLapi.getScores(date: nhlDate) { nhl in
+            self.nhlGameView.update(game: nhl.games[index])
+            self.lengthOfGameList = nhl.numberOfGames
         }
     }
     
@@ -99,8 +108,11 @@ class ScoresMenuController: NSObject {
 //        statusItem.title = "scores"
         statusItem.menu = scoresMenu
         
-        gameMenuItem = scoresMenu.item(withTitle: "NBAGames")
-        gameMenuItem.view = nbaGameView
+        nbaGameMenuItem = scoresMenu.item(withTitle: "NBAGames")
+        nbaGameMenuItem.view = nbaGameView
+        
+        nhlGameMenuItem = scoresMenu.item(withTitle: "NHLGames")
+        nhlGameMenuItem.view = nhlGameView
         
         let icon = NSImage(named: "statusIcon")
         icon?.isTemplate = true // best for dark mode
