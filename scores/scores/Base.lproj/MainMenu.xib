@@ -27,6 +27,7 @@
         <customObject id="mEQ-Hi-x7F" customClass="ScoresMenuController" customModule="scores" customModuleProvider="target">
             <connections>
                 <outlet property="gameView" destination="ctA-qj-Psm" id="Gnc-hs-Ma4"/>
+                <outlet property="nbaGameView" destination="ctA-qj-Psm" id="990-9C-y5U"/>
                 <outlet property="scoresMenu" destination="83B-5w-V2a" id="F9F-th-qjf"/>
                 <outlet property="yesterdayOrTodayButton" destination="LpI-Dl-h0U" id="9ME-nT-wgS"/>
             </connections>

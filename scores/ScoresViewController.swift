@@ -10,7 +10,7 @@ import Cocoa
 
 class ScoresMenuController: NSObject {
     @IBOutlet weak var scoresMenu: NSMenu!
-    @IBOutlet weak var gameView: GameView!
+    @IBOutlet weak var nbaGameView: GameView!
     @IBOutlet weak var yesterdayOrTodayButton: NSButton!
     
     var gameMenuItem: NSMenuItem!
@@ -42,7 +42,7 @@ class ScoresMenuController: NSObject {
             NBAapi.getScores(date: y) { nba in
                 self.isYesterday = true
                 self.yesterdayOrTodayButton.title = "Today"
-                self.gameView.update(game: nba.games[self.index])
+                self.nbaGameView.update(game: nba.games[self.index])
                 self.lengthOfGameList = nba.numberOfGames
             }
         } else {
@@ -50,7 +50,7 @@ class ScoresMenuController: NSObject {
             NBAapi.getScores(date: yesterdayNBADate) { nba in
                 self.isYesterday = false
                 self.yesterdayOrTodayButton.title = "Yesterday"
-                self.gameView.update(game: nba.games[self.index])
+                self.nbaGameView.update(game: nba.games[self.index])
                 self.lengthOfGameList = nba.numberOfGames
             }
         }
@@ -90,7 +90,7 @@ class ScoresMenuController: NSObject {
     func updateScores(index: Int) {
         let nbaDate = isYesterday ? yesterdayNBADate : NBAapi.getTodaysDate()
         NBAapi.getScores(date: nbaDate) { nba in
-            self.gameView.update(game: nba.games[index])
+            self.nbaGameView.update(game: nba.games[index])
             self.lengthOfGameList = nba.numberOfGames
         }
     }
@@ -100,7 +100,7 @@ class ScoresMenuController: NSObject {
         statusItem.menu = scoresMenu
         
         gameMenuItem = scoresMenu.item(withTitle: "NBAGames")
-        gameMenuItem.view = gameView
+        gameMenuItem.view = nbaGameView
         
         let icon = NSImage(named: "statusIcon")
         icon?.isTemplate = true // best for dark mode
