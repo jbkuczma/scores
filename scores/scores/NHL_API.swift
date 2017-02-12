@@ -13,6 +13,16 @@ struct NHL {
     var numberOfGames: Int
 }
 
+extension String {
+    func capitalizeFirst() -> String {
+        guard self.characters.count > 0 else {
+            return ""
+        }
+        let firstIndex = self.index(startIndex, offsetBy: 1)
+        return self.substring(to: firstIndex).capitalized + self.substring(from: firstIndex).lowercased()
+    }
+}
+
 
 class NHL_API {
     
@@ -69,6 +79,10 @@ class NHL_API {
         return nil
     }
     
+    func isGameOver(text: String) -> Bool {
+        return text.lowercased() == "final"
+    }
+    
     func parseData(data: [[String:Any]]) -> NHL? {
         
        
@@ -79,8 +93,13 @@ class NHL_API {
             let awayTeamScore = game["ats"]!
             let homeTeamName = game["htcommon"]! as! String
             let homeTeamScore = game["hts"]! 
-            let quarter = game["bsc"]! as! String
-            let time = game["bs"]! as! String
+            var quarter = game["bsc"]! as! String
+            quarter = quarter.capitalizeFirst()
+            var time = game["bs"]! as! String
+            if(self.isGameOver(text: time)){
+                // remove redundant final
+                time = ""
+            }
             let gameInfo = Game(
                 homeTeamName: homeTeamName,
                 homeTeamScore: String(describing: homeTeamScore),

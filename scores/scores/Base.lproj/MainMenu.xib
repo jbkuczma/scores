@@ -132,7 +132,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W2S-Pq-CRV">
-                    <rect key="frame" x="18" y="36" width="92" height="17"/>
+                    <rect key="frame" x="18" y="36" width="94" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Away Score" id="sux-Dj-aBQ">
                         <font key="font" metaFont="system"/>
@@ -141,7 +141,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-uT-jtg">
-                    <rect key="frame" x="154" y="66" width="83" height="17"/>
+                    <rect key="frame" x="145" y="66" width="101" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Quarter" id="cwb-ce-fFy">
                         <font key="font" metaFont="system"/>
@@ -150,7 +150,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JV4-w1-fwP">
-                    <rect key="frame" x="18" y="66" width="77" height="17"/>
+                    <rect key="frame" x="18" y="66" width="94" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Away Team" id="QFZ-zT-VOD">
                         <font key="font" metaFont="system"/>
@@ -159,7 +159,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5f3-tL-sXb">
-                    <rect key="frame" x="295" y="66" width="77" height="17"/>
+                    <rect key="frame" x="278" y="66" width="94" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Home Team" id="jw1-1v-lEy">
                         <font key="font" metaFont="system"/>
@@ -177,7 +177,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKT-Bv-4EF">
-                    <rect key="frame" x="166" y="36" width="59" height="17"/>
+                    <rect key="frame" x="151" y="36" width="89" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Time" id="6d4-gk-Etz">
                         <font key="font" metaFont="system"/>
@@ -194,7 +194,7 @@
                 <outlet property="quarter" destination="PF7-uT-jtg" id="hhx-Ez-MBo"/>
                 <outlet property="time" destination="EKT-Bv-4EF" id="cIU-TN-YxL"/>
             </connections>
-            <point key="canvasLocation" x="-305" y="254"/>
+            <point key="canvasLocation" x="-305" y="253.5"/>
         </customView>
         <customView id="iwy-2T-4R6" customClass="Control">
             <rect key="frame" x="0.0" y="0.0" width="390" height="47"/>
